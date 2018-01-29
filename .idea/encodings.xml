@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/server/db.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/pages/Home.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/pages/UserAdd.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/pages/UserList.js" charset="UTF-8" />
   </component>
 </project>

@@ -47,7 +47,8 @@ function formProvider(fields){
             }
             render(){
                 const {form,formValid} = this.state;
-                return <Comp {...this.props} form={form} formValid={formValid} onFormChange=this.handleValueChange />
+                return <Comp {...this.props} form={form} formValid={formValid} onFormChange={this.handleValueChange} />
+                //将传入的Comp加入props属性后渲染传出
             }
         }
         return FormComponent;
