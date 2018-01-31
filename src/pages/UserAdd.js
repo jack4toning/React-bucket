@@ -2,6 +2,7 @@ import React from 'react';
 import formProvider from '../utils/formProvider.js';
 import FormItem from '../components/FormItem.js';
 import PropTypes from 'prop-types';
+import HomeLayout from '../layouts/HomeLayout.js';
 
 class UserAdd extends React.Component{
     handleSubmit(e){
@@ -55,11 +56,7 @@ class UserAdd extends React.Component{
     render(){
         const {form:{name,age,gender},onFormChange} = this.props;
         return(
-            <div>
-                <header>
-                    <h1>添加用户</h1>
-                </header>
-                <main>
+                <HomeLayout title={"添加用户"}>
                     <form onSubmit={(e)=>this.handleSubmit(e)}>
                         <FormItem label={'用户名：'} valid={name.valid} error={name.error}>
                             <input type="text" value={name.value} onChange={(e)=>onFormChange('name',e.target.value)}/>
@@ -76,8 +73,7 @@ class UserAdd extends React.Component{
                         </FormItem>
                         <input type="submit" value="提交" />
                     </form>
-                </main>
-            </div>
+                </HomeLayout>
         );
     }
 }

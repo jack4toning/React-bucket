@@ -4,13 +4,16 @@ import {Router,Route,hashHistory} from 'react-router';
 import UserAddPage from './pages/UserAdd.js';
 import HomePage from './pages/Home.js';
 import UserListPage from './pages/UserList.js';
+import HomeLayout from './layouts/HomeLayout.js';
 
-//ReactDOM.render((<div>Hello React!</div>),document.getElementById('app'));
+
 
 ReactDOM.render(
     (<Router history={hashHistory}>
         <Route path="/" component={HomePage} />
-        <Route path="/user/add" component={UserAddPage} />
-        <Route path="/user/list" component={UserListPage} />
+        <Route path="/" component={HomeLayout}>
+            <Route path="/user/add" component={UserAddPage} />
+            <Route path="/user/list" component={UserListPage} />
+        </Route>
     </Router>),
-    document.getElementById('app'));
+document.getElementById('app'));

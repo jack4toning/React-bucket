@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "react-prop-types": "^0.4.0",
     "react-router": "^3.0.5"
   },
@@ -25,4 +25,9 @@
     "url": "https://github.com/jack4toning/React-bucket/issues"
   },
   "homepage": "https://github.com/jack4toning/React-bucket#readme"
+  "eslintConfig":{
+      "rules":{
+        "no-restricted-globals":"off"
+      }
+  }
 }
