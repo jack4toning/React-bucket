@@ -25,9 +25,5 @@
     "url": "https://github.com/jack4toning/React-bucket/issues"
   },
   "homepage": "https://github.com/jack4toning/React-bucket#readme"
-  "eslintConfig":{
-      "rules":{
-        "no-restricted-globals":"off"
-      }
-  }
+
 }

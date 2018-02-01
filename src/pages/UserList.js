@@ -16,7 +16,7 @@ class UserList extends React.Component{
         .then(res=>{
                 this.setState({
                     userList:res
-                })
+                });
             })
     }
 
@@ -24,7 +24,7 @@ class UserList extends React.Component{
 
     }
     handleDel(user){
-        const confirmed = confirm(`确定要删除用户 ${user.name} 吗？`);
+        const confirmed = window.confirm(`确定要删除用户 ${user.name} 吗？`);
         if(confirmed){
             fetch('http://localhost:3000/user/'+user.id,{
                 method:'delete'
@@ -34,11 +34,12 @@ class UserList extends React.Component{
                     this.setState({
                         userList:this.state.userList.filter(item=>item.id!==user.id)
                     });
-                    alert('删除成功')
+                    alert(`删除用户 ${user.name}成功`);
+                    console.log(res);
                 })
             .catch(err=>{
                     console.error(err);
-                    alert('删除失败');
+                    alert(`删除用户 ${user.name}失败`);
                 })
         }
     }
