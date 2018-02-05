@@ -24,9 +24,9 @@ class UserEdit extends React.Component {
     render(){
         const{user} = this.state;
         return(
-            <HomeLayout title = "±‡º≠”√ªß">
+            <HomeLayout title = "ÁºñËæëÁî®Êà∑">
                 {
-                    user?<UserEditor editTarget={user} />:'º”‘ÿ÷–...'
+                    user?<UserEditor editTarget={user} />:'Âä†ËΩΩ‰∏≠...'
                 }
             </HomeLayout>
         )

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    var obj = {"name":"Poly", "career":"it"}
+    Object.defineProperty(obj, "age", {value:"forever 18", enumerable:true});
+    Object.prototype.protoPer1 = function(){console.log("proto");};
+    Object.prototype.protoPer2 = 2;
+    console.log("Object.keys:")
+    console.log(Object.keys(obj));
+</script>
+</body>
+</html>

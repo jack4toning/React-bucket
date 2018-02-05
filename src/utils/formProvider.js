@@ -18,6 +18,7 @@ function formProvider(fields){
                     formValid: false
                 };
                 this.handleValueChange = this.handleValueChange.bind(this);
+                this.setFormValues = this.setFormValues.bind(this);
             }
 
             setFormValues(values){
@@ -29,13 +30,13 @@ function formProvider(fields){
                 for(const field in form){
                     if(form.hasOwnProperty(field)){
                         if(typeof values[field]!=='undefined'){
-                            newForm[field].value = values[field]
+                            newForm[field].value = values[field];
+                            //newForm[field] = {...newForm[field], value: values[field]};  ä½œè€…å†™çš„ï¼Œç¼–è¯‘ä¸å¯¹
                         }
-                        //Õı³£Çé¿öÏÂÖ÷¶¯ÉèÖÃµÄÃ¿¸ö×Ö¶ÎÒ»¶¨ÊÇÓĞĞ§µÄ
+                        //æ­£å¸¸æƒ…å†µä¸‹ä¸»åŠ¨è®¾ç½®çš„æ¯ä¸ªå­—æ®µä¸€å®šæ˜¯æœ‰æ•ˆçš„
                         newForm[field].valid = true;
                     }
                 }
-
                 this.setState({form:newForm});
             }
 
@@ -75,7 +76,7 @@ function formProvider(fields){
                                 onFormChange={this.handleValueChange}
                                 setFormValues={this.setFormValues}
                             />;
-                //½«´«ÈëµÄComp¼ÓÈëpropsÊôĞÔºóäÖÈ¾´«³ö
+                //å°†ä¼ å…¥çš„CompåŠ å…¥propså±æ€§åæ¸²æŸ“ä¼ å‡º
             }
         }
         return FormComponent;
@@ -85,26 +86,26 @@ function formProvider(fields){
 export default formProvider;
 
 /*
-    ×¢ÊÍ£º
-            formProviderµÄµÚÒ»¸ö²ÎÊıfieldsÊÇÒ»¸ö¶ÔÏó£¬Æä½á¹¹Îª£º
+    æ³¨é‡Šï¼š
+            formProviderçš„ç¬¬ä¸€ä¸ªå‚æ•°fieldsæ˜¯ä¸€ä¸ªå¯¹è±¡ï¼Œå…¶ç»“æ„ä¸ºï¼š
 
-             // ±íÊ¾±íµ¥ÖĞÓĞname¡¢age¡¢gender3¸ö×Ö¶Î
+             // è¡¨ç¤ºè¡¨å•ä¸­æœ‰nameã€ageã€gender3ä¸ªå­—æ®µ
              const fields = {
              name: {
              defaultValue: '',
              rules: [
              {
-             // patternÓÃÓÚ¶ÔÖµ½øĞĞĞ£Ñé£¬¿ÉÒÔÎª·½·¨»òÒ»¸öRegExp¶ÔÏó
-             // Èô·½·¨µÄ·µ»ØÖµÎªÒ»¸öÕæÖµ»òRegExp.test(value)·µ»ØtrueÔòĞ£ÑéÍ¨¹ı
+             // patternç”¨äºå¯¹å€¼è¿›è¡Œæ ¡éªŒï¼Œå¯ä»¥ä¸ºæ–¹æ³•æˆ–ä¸€ä¸ªRegExpå¯¹è±¡
+             // è‹¥æ–¹æ³•çš„è¿”å›å€¼ä¸ºä¸€ä¸ªçœŸå€¼æˆ–RegExp.test(value)è¿”å›trueåˆ™æ ¡éªŒé€šè¿‡
              pattern: function (value) {
              return value.length > 0;
              },
-             // Ã¿¸öpattern¶ÔÓ¦Ò»¸öerrorĞÅÏ¢
-             error: 'ÇëÊäÈëÓÃ»§Ãû'
+             // æ¯ä¸ªpatternå¯¹åº”ä¸€ä¸ªerrorä¿¡æ¯
+             error: 'è¯·è¾“å…¥ç”¨æˆ·å'
              },
              {
              pattern: /^.{1,4}$/,
-             error: 'ÓÃ»§Ãû×î¶à4¸ö×Ö·û'
+             error: 'ç”¨æˆ·åæœ€å¤š4ä¸ªå­—ç¬¦'
              }
              ]
              },

@@ -8,7 +8,8 @@ class UserList extends React.Component{
         super(props);
         this.state = {
             userList:[]
-        }
+        };
+        this.handleEdit = this.handleEdit.bind(this);
     }
     componentWillMount(){
         fetch('http://localhost:3000/user')
@@ -21,7 +22,7 @@ class UserList extends React.Component{
     }
 
     handleEdit(user){
-
+        this.context.router.push(`/user/edit/${user.id}`);
     }
     handleDel(user){
         const confirmed = window.confirm(`确定要删除用户 ${user.name} 吗？`);
@@ -78,9 +79,15 @@ class UserList extends React.Component{
                         }
                         </tbody>
                     </table>
+                    <br/>
+                    <a href="javascript:void(0)" onClick={()=>this.context.router.push('/')}>&lt;--返回主页</a>
                 </HomeLayout>
         );
     }
 }
+
+UserList.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default  UserList;

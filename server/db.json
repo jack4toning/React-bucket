@@ -1,12 +1,6 @@
 {
   "user": [
     {
-      "id": 10000,
-      "name": "一韬",
-      "age": 25,
-      "gender": "male"
-    },
-    {
       "id": 10001,
       "name": "张三",
       "age": 30,
@@ -19,21 +13,15 @@
       "id": 10002
     },
     {
-      "name": "韩梅梅",
-      "age": 25,
-      "gender": "female",
-      "id": 10003
-    },
-    {
       "name": "bart",
       "age": "15",
       "gender": "male",
       "id": 10004
     },
     {
-      "name": "lisa",
-      "age": "8",
-      "gender": "female",
+      "name": "stu",
+      "age": "23",
+      "gender": "male",
       "id": 10005
     }
   ],
@@ -42,7 +30,7 @@
       "id": 10000,
       "name": "JavaScript从入门到精通",
       "price": 9990,
-      "owner_id": 10000
+      "owner_id": 10002
     },
     {
       "id": 10001,

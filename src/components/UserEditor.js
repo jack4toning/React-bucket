@@ -4,20 +4,20 @@ import formProvider from '../utils/formProvider.js';
 
 class UserEditor extends React.Component{
     handleSubmit(e){
-        //×èÖ¹±íµ¥submitÊÂ¼þ×Ô¶¯Ìø×ªÒ³ÃæµÄ¶¯×÷
+        //é˜»æ­¢è¡¨å•submitäº‹ä»¶è‡ªåŠ¨è·³è½¬é¡µé¢çš„åŠ¨ä½œ
         e.preventDefault();
         //alert(JSON.stringify(this.state));
         const {form:{name,age,gender},formValid,editTarget} = this.props;
         if(!formValid){
-            alert('ÇëÌîÕýÈ·ÌîÐ´ºóÖØÊÔ');
+            alert('è¯·å¡«æ­£ç¡®å¡«å†™åŽé‡è¯•');
             return;
         }
 
-        let editType = 'Ìí¼Ó';
+        let editType = 'æ·»åŠ ';
         let apiUrl = 'http://localhost:3000/user';
         let method = 'post';
         if(editTarget){
-            editType = '±à¼­';
+            editType = 'ç¼–è¾‘';
             apiUrl +='/'+editTarget.id;
             method = 'put';
         }
@@ -26,7 +26,7 @@ class UserEditor extends React.Component{
         fetch(apiUrl,
             {
                 method,
-                //Ê¹ÓÃfetchÌá½»µÄjsonÊý¾ÝÐèÒªÊ¹ÓÃJSON.stringify×ª»»Îª×Ö·û´®
+                //ä½¿ç”¨fetchæäº¤çš„jsonæ•°æ®éœ€è¦ä½¿ç”¨JSON.stringifyè½¬æ¢ä¸ºå­—ç¬¦ä¸²
                 body:JSON.stringify({
                     name:name.value,
                     age:age.value,
@@ -36,9 +36,9 @@ class UserEditor extends React.Component{
                     'Content-Type':'application/json'
                 }
             })
-            //fetchÈç¹û·ÃÎÊurl³É¹¦»á·µ»ØÒ»¸ö×´Ì¬ÎªresolvedµÄpromise¶ÔÏó£¬¸Ã¶ÔÏóresolved·µ»Ø¸øthenµÄ²ÎÊýresÎªÒÔÏÂjsonµÄ×Ö·û´®¸ñÊ½
-            //ÒÔÏÂjsonÏàµ±ÓÚÊÇ´«³öÈ¥µÄjson¼ÓÉÏÁËÒ»¸öidÁÐ£¨Ïàµ±ÓÚÍùÊý¾Ý¿âµÄ±íÖÐ¼ÓÒ»ÐÐ£¬Ã»ÓÐÖ¸¶¨Ö÷¼üÖµ£¬Êý¾Ý¿â×Ô¼º¸øÕâÒ»ÐÐÌí¼ÓÁËÖ÷¼ü¡££©
-            //ÒÔÏÂjsonÊÇÊý¾Ý¿â½ÓÊÕµ½Êý¾Ýºó·µ»ØµÄÐÂÔöµÄÄÇÒ»ÐÐ
+            //fetchå¦‚æžœè®¿é—®urlæˆåŠŸä¼šè¿”å›žä¸€ä¸ªçŠ¶æ€ä¸ºresolvedçš„promiseå¯¹è±¡ï¼Œè¯¥å¯¹è±¡resolvedè¿”å›žç»™thençš„å‚æ•°resä¸ºä»¥ä¸‹jsonçš„å­—ç¬¦ä¸²æ ¼å¼
+            //ä»¥ä¸‹jsonç›¸å½“äºŽæ˜¯ä¼ å‡ºåŽ»çš„jsonåŠ ä¸Šäº†ä¸€ä¸ªidåˆ—ï¼ˆç›¸å½“äºŽå¾€æ•°æ®åº“çš„è¡¨ä¸­åŠ ä¸€è¡Œï¼Œæ²¡æœ‰æŒ‡å®šä¸»é”®å€¼ï¼Œæ•°æ®åº“è‡ªå·±ç»™è¿™ä¸€è¡Œæ·»åŠ äº†ä¸»é”®ã€‚ï¼‰
+            //ä»¥ä¸‹jsonæ˜¯æ•°æ®åº“æŽ¥æ”¶åˆ°æ•°æ®åŽè¿”å›žçš„æ–°å¢žçš„é‚£ä¸€è¡Œ
             /*
              {
              id,
@@ -48,19 +48,18 @@ class UserEditor extends React.Component{
              }
 
              */
-            //resÊÇresponseµÄËõÐ´
+            //resæ˜¯responseçš„ç¼©å†™
             .then((res)=>res.json())
             .then((res)=>{
                 if(res.id){
-                    alert(editType+'ÓÃ»§³É¹¦£¡');
+                    alert(editType+'ç”¨æˆ·æˆåŠŸï¼');
                     this.context.router.push('/user/list');
-                    //this.context.router.pushÓÃÀ´Ìø×ªµ½¸ÃÂ·¾¶ÔÚÂ·ÓÉÖÐ¶ÔÓ¦µÄ×é¼þ
+                    //this.context.router.pushç”¨æ¥è·³è½¬åˆ°è¯¥è·¯å¾„åœ¨è·¯ç”±ä¸­å¯¹åº”çš„ç»„ä»¶
                 }else{
-                    alert(editType+'ÓÃ»§Ê§°Ü£¡');
+                    alert(editType+'ç”¨æˆ·å¤±è´¥ï¼');
                 }
             })
             .catch((err)=>console.error(err));
-
     }
 
     componentWillMount(){
@@ -74,20 +73,20 @@ class UserEditor extends React.Component{
         const{form:{name,age,gender},onFormChange} = this.props;
         return(
             <form onSubmit={(e)=>this.handleSubmit(e)}>
-                <FormItem label={'ÓÃ»§Ãû£º'} valid={name.valid} error={name.error}>
+                <FormItem label={'ç”¨æˆ·åï¼š'} valid={name.valid} error={name.error}>
                     <input type="text" value={name.value} onChange={(e)=>onFormChange('name',e.target.value)}/>
                 </FormItem>
-                <FormItem label={'ÄêÁä£º'} valid={age.valid} error={age.error}>
+                <FormItem label={'å¹´é¾„ï¼š'} valid={age.valid} error={age.error}>
                     <input type="number" value={age.value||''} onChange={(e)=>onFormChange('age',e.target.value)} />
                 </FormItem>
-                <FormItem label={'ÐÔ±ð£º'} valid={gender.valid} error={gender.error}>
+                <FormItem label={'æ€§åˆ«ï¼š'} valid={gender.valid} error={gender.error}>
                     <select value={gender.value} onChange={(e)=>onFormChange('gender',e.target.value)}>
-                        <option value="">ÇëÑ¡Ôñ</option>
-                        <option value="male">ÄÐ</option>
-                        <option value="female">Å®</option>
+                        <option value="">è¯·é€‰æ‹©</option>
+                        <option value="male">ç”·</option>
+                        <option value="female">å¥³</option>
                     </select>
                 </FormItem>
-                <input type="submit" value="Ìá½»" />
+                <input type="submit" value="æäº¤" />
             </form>
         );
     }
@@ -103,11 +102,11 @@ UserEditor = formProvider({
         rules:[
             {
                 pattern:value=>value.length>0,
-                error:'ÇëÊäÈëÓÃ»§Ãû'
+                error:'è¯·è¾“å…¥ç”¨æˆ·å'
             },
             {
                 pattern:/^.{1,4}$/,
-                error:'ÓÃ»§Ãû²»ÄÜ³¬¹ý4¸ö×Ö·û'
+                error:'ç”¨æˆ·åä¸èƒ½è¶…è¿‡4ä¸ªå­—ç¬¦'
             }
         ]
     },
@@ -116,7 +115,7 @@ UserEditor = formProvider({
         rules:[
             {
                 pattern:value=>value>=1&&value<=100,
-                error:'ÇëÌîÈë0~100µÄÊý×Ö'
+                error:'è¯·å¡«å…¥0~100çš„æ•°å­—'
             },
             {
                 //pattern:value=>value===Math.floor(value),
@@ -124,7 +123,7 @@ UserEditor = formProvider({
                     value = +value;
                     return (value===Math.floor(value))
                 },
-                error:'ÇëÌîÈëÕûÊý'
+                error:'è¯·å¡«å…¥æ•´æ•°'
             }
         ]
     },
@@ -134,7 +133,7 @@ UserEditor = formProvider({
             {
                 //pattern:value=>value=='male'||value=='female',
                 pattern:value=>!!value,
-                error:'ÇëÑ¡ÔñÐÔ±ð'
+                error:'è¯·é€‰æ‹©æ€§åˆ«'
             }
         ]
     }
