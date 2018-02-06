@@ -7,6 +7,16 @@ class BookAdd extends React.Component {
     return (
       <HomeLayout title="添加图书">
         <BookEditor/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <a href="javascript:void(0)" onClick={()=>this.context.router.push('/')}>&lt;--返回主页</a>
       </HomeLayout>
     );

@@ -6,13 +6,23 @@
 </head>
 <body>
 
-
+<input onchange="fc()" id="ipt" type="number"   value=''    />
 <script>
-    str = '-1';
+/*    str = '-1';
     function cal(str){
         return str>0
     }
     console.log(cal(str));
+*/
+
+    function fc(){
+        console.log(typeof oIpt.value);
+        console.log(oIpt.value+" is "+pattern.test(oIpt.value));
+    }
+
+    var oIpt = document.getElementById('ipt');
+   var pattern = /\d+/;
+//    console.log(pattern.test(oIpt.value));
 </script>
 </body>
 </html>

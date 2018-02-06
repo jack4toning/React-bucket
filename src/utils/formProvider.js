@@ -52,6 +52,7 @@ function formProvider(fields){
                         valid = pattern(value);
                     }else{
                         valid = pattern.test(value);
+                        //console.log(value+" is "+valid);
                     }
                     if(!valid){
                         newFieldState.valid = false;

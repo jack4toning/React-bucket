@@ -10,6 +10,7 @@ class BookEditor extends React.Component {
       recommendUsers: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOwnerIdChange = this.handleOwnerIdChange.bind(this);
   }
 
   componentWillMount () {
@@ -97,6 +98,10 @@ class BookEditor extends React.Component {
     }
   }
 
+  //handleNumberE(e){
+  //  return ( /[\d]/.test(String.fromCharCode(e.keyCode) ) );
+  //}
+
   render () {
     const {recommendUsers} = this.state;
     const {form: {name, price, owner_id}, onFormChange} = this.props;
@@ -107,15 +112,17 @@ class BookEditor extends React.Component {
         </FormItem>
 
         <FormItem label="价格：" valid={price.valid} error={price.error}>
-          <input type="number" value={price.value || ''} onChange={e => onFormChange('price', +e.target.value)}/>
+          <input type="number" /*onKeyPress={e=>this.handleNumberE(e)}*/  value={price.value || ''} onChange={e => onFormChange('price', +e.target.value)}/>
         </FormItem>
 
         <FormItem label="所有者：" valid={owner_id.valid} error={owner_id.error}>
           {/*<input type="number" value={owner_id.value || ''} onChange={e => onFormChange('owner_id', +e.target.value)}/>*/}
           <AutoComplete
             value={owner_id.value ? owner_id.value + '' : ''}
-            options={recommendUsers}
-            onValueChange={value => this.handleOwnerIdChange(value)}
+            //options={recommendUsers}
+            options={['10001','10002']}
+            //onValueChange={value => this.handleOwnerIdChange(value)}
+            onValueChange={value => onFormChange('owner_id',value)}
           />
         </FormItem>
         <br/>
