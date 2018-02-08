@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from '../styles/auto-complete.less';
 
+
+//有时候我们显示的值不一定是我们想要得到的值，这样是为什么我在组件的代码里有一个getItemValue方法了。
 function getItemValue(item){
     return item.value||item;
 }
@@ -13,8 +15,9 @@ class AutoComplete extends React.Component{
         this.state = {
             displayValue:'',
             activeItemIndex:-1
-        }
-
+        };
+    this.handleLeave = this.handleLeave.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     };
 
 

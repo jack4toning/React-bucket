@@ -17,7 +17,9 @@
     "react-prop-types": "^0.4.0",
     "react-router": "^3.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "json-server": "^0.12.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jack4toning/React-bucket.git"

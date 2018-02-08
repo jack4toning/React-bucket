@@ -62,23 +62,47 @@ class BookEditor extends React.Component {
       .catch((err) => console.error(err));
   }
 
+  //备份getRecommendUsers (partialUserName)
+  /*  getRecommendUsers (partialUserName) {
+      fetch('http://localhost:3000/user?name_like=' + partialUserName)
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.length === 1 && res[0].name === partialUserName) {
+            //如果结果只有一条且name与输入的name一致，说明输入的name已经完整了，没必要 再设置建议列表
+            return;
+          }
+
+            //设置建议列表
+          this.setState({
+            recommendUsers: res.map((user) => {
+              return {
+                text: `${user.id}（${user.name}）`,
+                value: user.name
+              };
+            })
+          });
+        });
+    }*/
+
   getRecommendUsers (partialUserId) {
     fetch('http://localhost:3000/user?id_like=' + partialUserId)
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.length === 1 && res[0].id === partialUserId) {
-          return;
-        }
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.length === 1 && res[0].id === partialUserId) {
+            //如果结果只有一条且id与输入的id一致，说明输入的id已经完整了，没必要 再设置建议列表
+            return;
+          }
 
-        this.setState({
-          recommendUsers: res.map((user) => {
-            return {
-              text: `${user.id}（${user.name}）`,
-              value: user.id
-            };
-          })
+          //设置建议列表
+          this.setState({
+            recommendUsers: res.map((user) => {
+              return {
+                text: `${user.id}（${user.name}）`,
+                value: user.id
+              };
+            })
+          });
         });
-      });
   }
 
   timer = 0;
@@ -86,12 +110,16 @@ class BookEditor extends React.Component {
     this.props.onFormChange('owner_id', value);
     this.setState({recommendUsers: []});
 
+
+    //使用“节流”的方式进行请求，防止用户输入的过程中过多地发送请求
     if (this.timer) {
       clearTimeout(this.timer);
     }
 
     if (value) {
+      //200ms内只会发送1次请求
       this.timer = setTimeout(() => {
+        //真正的请求方法
         this.getRecommendUsers(value);
         this.timer = 0;
       }, 200);
@@ -119,10 +147,12 @@ class BookEditor extends React.Component {
           {/*<input type="number" value={owner_id.value || ''} onChange={e => onFormChange('owner_id', +e.target.value)}/>*/}
           <AutoComplete
             value={owner_id.value ? owner_id.value + '' : ''}
-            //options={recommendUsers}
-            options={['10001','10002']}
-            //onValueChange={value => this.handleOwnerIdChange(value)}
-            onValueChange={value => onFormChange('owner_id',value)}
+            options={recommendUsers}
+            onValueChange={value => this.handleOwnerIdChange(value)}
+
+/*              //以下code为测试场景用
+            options={[{text:'10001（张三）',value:10001},{text:'10002（moe）',value:10002}]}
+            onValueChange={value => onFormChange('owner_id',value)}*/
           />
         </FormItem>
         <br/>
@@ -151,10 +181,6 @@ BookEditor = formProvider({
   price: {
     defaultValue: 0,
     rules: [
-      {
-        pattern: /\d+/,
-        error: '请输入一个整数'
-      },
       {
         pattern (value) {
           return value > 0;

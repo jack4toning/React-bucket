@@ -67,7 +67,7 @@ class BookList extends React.Component {
                 <tr key={book.id}>
                   <td>{book.id}</td>
                   <td>{book.name}</td>
-                  <td>&yen;{book.price / 100}</td>
+                  <td>&yen;{book.price}</td>
                   <td>{book.owner_id}</td>
                   <td>
                     <a href="javascript:void(0)" onClick={() => this.handleEdit(book)}>编辑</a>
