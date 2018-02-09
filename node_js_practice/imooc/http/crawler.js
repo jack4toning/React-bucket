@@ -4,8 +4,18 @@ const cheerio = require('cheerio');
 const url = 'https://www.imooc.com/learn/944';
 
 
+//删除字符串中的所有空格
+const trimAll = (str,is_global)=> {
+    var result;
+    result = str.replace(/(^\s+)|(\s+$)/g, "");
+    if (is_global.toLowerCase() == "g") {
+        result = result.replace(/\s/g, "");
+    }
+    return result;
+};
+
 const filterChapters = (html)=>{
-    const $ = cheerio.load(html);
+    let $ = cheerio.load(html);
     let chapters = $('.chapter');
 
 
@@ -19,20 +29,25 @@ const filterChapters = (html)=>{
             ]
         }]*/
     let courseData = [];
-    chapters.each((item)=>{
+    chapters.each(function(){
         let chapter = $(this);
-        let chapterTitle = chapter.find('strong');
-        let t = chapterTitle.text();
-        console.log(t);
+        let chapterTitle = chapter.find('strong').text().trim();
+        //chapterTitle.find('i').remove();
+        //chapterTitle.find('div').remove();
+        chapterTitle = trimAll(chapterTitle,'g');
 
         let videos = chapter.find('.video').children('li');
         let chapterData = {
             chapterTitle:chapterTitle,
             videos:[]
         };
-        videos.each((item)=>{
+        videos.each(function(){
+
             let video = $(this).find('.J-media-item');
-            let videoTitle = video.text();
+            let videoTitle = video.text().trim();
+            videoTitle = trimAll(videoTitle,'g');
+
+
             let id = video.attr('href').split('video/')[1];
             chapterData.videos.push({
                 videoTitle:videoTitle,
@@ -45,7 +60,6 @@ const filterChapters = (html)=>{
 };
 
 const printCourseInfo = (courseData)=>{
-    console.log(1);
     courseData.forEach((item)=>{
         let chapterTitle =  item.chapterTitle;
         console.log(chapterTitle+'\n');
@@ -53,7 +67,6 @@ const printCourseInfo = (courseData)=>{
             console.log('['+item.id+']'+item.videoTitle+'\n');
         });
     });
-    console.log(2);
 };
 
 http.get(url,(res)=>{

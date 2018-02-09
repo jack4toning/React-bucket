@@ -13,5 +13,5 @@ http.get(url,(res)=>{
         console.log(html)
     })
 }).on('error',()=>{
-    console.log('获取课程数据出错')
+    console.log('鑾峰彇璇剧▼鏁版嵁鍑洪敊')
 });
