@@ -7,7 +7,7 @@ const url = 'https://www.imooc.com/learn/944';
 //删除字符串中的所有空格
 const trimAll = (str,is_global)=> {
     var result;
-    result = str.replace(/(^\s+)|(\s+$)/g, "");
+    result = str.replace(/(^\s+)|(\s+$)/, "");
     if (is_global.toLowerCase() == "g") {
         result = result.replace(/\s/g, "");
     }
