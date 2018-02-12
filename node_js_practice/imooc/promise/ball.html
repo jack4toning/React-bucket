@@ -31,6 +31,9 @@
     let ball1 = document.querySelector('.ball1');
     let ball2 = document.querySelector('.ball2');
     let ball3 = document.querySelector('.ball3');
+
+/*
+    //普通递归方式  看起来冗余复杂，可读性不高
     function animate(ball,distance,fn){
         setTimeout(function () {
             let marginLeft = parseInt(ball.style.marginLeft,10);
@@ -48,27 +51,31 @@
         },13)
     }
     
-//    animate(ball1,100, function () {
-//        animate(ball2,200, function () {
-//            animate(ball3,300, function () {
-//                animate(ball3,150, function () {
-//                    animate(ball2,150, function () {
-//                        animate(ball1,150, function () {
-//
-//                        })
-//                    })
-//                })
-//            })
-//        })
-//    })
+    animate(ball1,100, function () {
+        animate(ball2,200, function () {
+            animate(ball3,300, function () {
+                animate(ball3,150, function () {
+                    animate(ball2,150, function () {
+                        animate(ball1,150, function () {
+
+                        })
+                    })
+                })
+            })
+        })
+     })
+
+*/
+
+//Promise方式
     let Promise = window.Promise;
     function promiseAnimate(ball,distance){
         return new Promise(function (resolve,reject) {
-            function _animate(ball,distance,fn){
+            function _animate(){
                 setTimeout(function () {
                     let marginLeft = parseInt(ball.style.marginLeft,10);
                     if(marginLeft === distance){
-                        resolve;
+                        resolve();
                     }else{
                         if(marginLeft<distance){
                             marginLeft++;
@@ -83,6 +90,24 @@
             _animate();
         })
     }
+    promiseAnimate(ball1,100)
+            .then(function(){
+                return promiseAnimate(ball2,200)
+            })
+            .then(function () {
+                return promiseAnimate(ball3,300)
+            })
+            .then(function () {
+                return promiseAnimate(ball3,150)
+            })
+            .then(function () {
+                return promiseAnimate(ball2,150)
+            })
+            .then(function () {
+                return promiseAnimate(ball1,150)
+            })
+
+
 </script>
 </body>
 </html>
