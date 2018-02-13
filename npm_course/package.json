@@ -1,0 +1,19 @@
+{
+  "name": "npm_course",
+  "version": "1.0.0",
+  "description": "a npm start project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo hello world"
+  },
+  "author": "hr",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "lodash": "^4.17.5",
+    "npm-check-updates": "^2.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}

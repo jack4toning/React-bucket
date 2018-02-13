@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd server && json-server db.json -w -p 3000",
+    "server": "cd server && json-server db.json -w -p 3000",   //此处的两个&&代表串行，一个&的话代表并行
     "dev": "roadhog server"
   },
   "author": "",
