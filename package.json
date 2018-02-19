@@ -2,10 +2,9 @@
   "name": "react-bucket",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd server && json-server db.json -w -p 3000",   //此处的两个&&代表串行，一个&的话代表并行
+    "server": "node server/index.js",
     "dev": "roadhog server"
   },
   "author": "",
@@ -30,3 +29,4 @@
   },
   "homepage": "https://github.com/jack4toning/React-bucket#readme"
 }
+
