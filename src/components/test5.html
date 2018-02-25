@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="height: 500px">
+<div id="all" style="border:1px solid black;padding-bottom: 30px">
+    <div>div1</div>
+    <div>div2</div>
+</div>
+
+<script>
+
+    //将这里的false，改成true.表明body的绑定事件发生在捕获阶段
+//    document.getElementsByTagName('body')[0].addEventListener('click', function(e) {
+//        alert(1);
+//    }, true);
+    document.getElementById('all').addEventListener('click', function(e) {
+        alert(e.target.innerText);
+    }, false);
+</script>
+</body>
+</html>
