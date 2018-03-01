@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeLayout from '../layouts/HomeLayout.js';
-
+import request,{get} from '../utils/request';
 
 
 class UserList extends React.Component{
@@ -12,8 +12,9 @@ class UserList extends React.Component{
         this.handleEdit = this.handleEdit.bind(this);
     }
     componentWillMount(){
-        fetch('http://localhost:3000/user')
-        .then(res=>res.json())
+/*        fetch('http://localhost:3000/user')
+        .then(res=>res.json())*/
+        get('http://localhost:3000/user')
         .then(res=>{
                 this.setState({
                     userList:res

@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeLayout from '../layouts/HomeLayout';
+import request,{get} from '../utils/request';
 
 class BookList extends React.Component {
   constructor (props) {
@@ -10,8 +11,9 @@ class BookList extends React.Component {
   }
 
   componentWillMount () {
-    fetch('http://localhost:3000/book')
-      .then(res => res.json())
+/*    fetch('http://localhost:3000/book')
+      .then(res => res.json())*/
+    get('http://localhost:3000/book')
       .then(res => {
         this.setState({
           bookList: res

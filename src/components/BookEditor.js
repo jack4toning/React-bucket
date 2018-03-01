@@ -2,6 +2,7 @@ import React from 'react';
 import FormItem from './FormItem';
 import AutoComplete from './AutoComplete';
 import formProvider from '../utils/formProvider';
+import request,{get} from '../utils/request';
 
 class BookEditor extends React.Component {
   constructor (props) {
@@ -38,7 +39,7 @@ class BookEditor extends React.Component {
       method = 'put';
     }
 
-    fetch(apiUrl, {
+/*    fetch(apiUrl, {
       method,
       body: JSON.stringify({
         name: name.value,
@@ -49,7 +50,12 @@ class BookEditor extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then((res) => res.json())
+      .then((res) => res.json())*/
+    request(method,apiUrl,{
+      name:name.value,
+      price:price.value,
+      owner_id:owner_id.value
+    })
       .then((res) => {
         if (res.id) {
           alert(editType + '书本成功');

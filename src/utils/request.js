@@ -18,4 +18,22 @@ export default function request(method,url,body) {
         },
         body
     })
+        .then((res)=>{
+            if(res.status===401){
+                hashHistory.push('/login');
+                return Promise.reject('Unauthorized.');
+            }else{
+                const token = res.headers.get('access-token');
+                if(token){
+                    sessionStorage.setItem('access_token',token);
+                }
+                return res.json();
+            }
+        });
 }
+
+export const get = url =>request('GET',url);
+export const post = (url,body) =>request('POST',url,body);
+export const put = (url,body) =>request('PUT',url,body);
+export const del = (url,body) =>request('DELETE',url,body);
+

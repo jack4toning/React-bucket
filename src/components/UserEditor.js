@@ -1,6 +1,7 @@
 import React from 'react';
 import FormItem from '../components/FormItem.js';
 import formProvider from '../utils/formProvider.js';
+import request,{get} from '../utils/request';
 
 class UserEditor extends React.Component{
     handleSubmit(e){
@@ -22,8 +23,20 @@ class UserEditor extends React.Component{
             method = 'put';
         }
 
+        //fetch如果访问url成功会返回一个状态为resolved的promise对象，该对象resolved返回给then的参数res为以下json的字符串格式
+        //以下json相当于是传出去的json加上了一个id列（相当于往数据库的表中加一行，没有指定主键值，数据库自己给这一行添加了主键。）
+        //以下json是数据库接收到数据后返回的新增的那一行
+        /*
+         {
+         id,
+         name,
+         age,
+         gender
+         }
 
-        fetch(apiUrl,
+         */
+        //res是response的缩写
+/*        fetch(apiUrl,
             {
                 method,
                 //使用fetch提交的json数据需要使用JSON.stringify转换为字符串
@@ -31,25 +44,14 @@ class UserEditor extends React.Component{
                     name:name.value,
                     age:age.value,
                     gender:gender.value
-                }),
-                headers:{
-                    'Content-Type':'application/json'
-                }
+                })
             })
-            //fetch如果访问url成功会返回一个状态为resolved的promise对象，该对象resolved返回给then的参数res为以下json的字符串格式
-            //以下json相当于是传出去的json加上了一个id列（相当于往数据库的表中加一行，没有指定主键值，数据库自己给这一行添加了主键。）
-            //以下json是数据库接收到数据后返回的新增的那一行
-            /*
-             {
-             id,
-             name,
-             age,
-             gender
-             }
-
-             */
-            //res是response的缩写
-            .then((res)=>res.json())
+            .then((res)=>res.json())*/
+        request(method,apiUrl,{
+            name:name.value,
+            age:age.value,
+            gender:gender.value
+        })
             .then((res)=>{
                 if(res.id){
                     alert(editType+'用户成功！');
