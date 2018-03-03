@@ -14,7 +14,7 @@ server.post('/login',function(req,res,next){
         res.header('access-token',Date.now());
         res.json(true);
     }else{
-        res.json(false)
+        res.json(false);
     }
 });
 

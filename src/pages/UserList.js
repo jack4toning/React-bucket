@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeLayout from '../layouts/HomeLayout.js';
-import request,{get} from '../utils/request';
+import request,{get,del} from '../utils/request';
 
 
 class UserList extends React.Component{
@@ -28,10 +28,11 @@ class UserList extends React.Component{
     handleDel(user){
         const confirmed = window.confirm(`确定要删除用户 ${user.name} 吗？`);
         if(confirmed){
-            fetch('http://localhost:3000/user/'+user.id,{
+          /*  fetch('http://localhost:3000/user/'+user.id,{
                 method:'delete'
             })
-            .then(res=>res.json())
+            .then(res=>res.json())*/
+            del('http://localhost:3000/user/'+user.id)
             .then(res=>{
                     this.setState({
                         userList:this.state.userList.filter(item=>item.id!==user.id)

@@ -14,7 +14,7 @@ class Login extends React.Component{
         e.preventDefault();
         const {formValid,form:{account,password}} = this.props;
         if(!formValid){
-            alert('ÇëÊäÈëÕËºÅ»òÃÜÂë');
+            alert('è¯·è¾“å…¥è´¦å·æˆ–å¯†ç ');
             return;
         }
 
@@ -26,7 +26,7 @@ class Login extends React.Component{
                 if(res){
                     this.context.router.push('/');
                 }else{
-                    alert('µÇÂ½Ê§°Ü£¬ÕËºÅ»òÃÜÂë´íÎó');
+                    alert('ç™»å½•å¤±è´¥ï¼Œè´¦å·æˆ–å¯†ç é”™è¯¯');
                 }
             })
     }
@@ -34,16 +34,16 @@ class Login extends React.Component{
     render(){
         const {form:{account,password},onFormChange} = this.props;
         return(
-            <HomeLayout title="ÇëµÇÂ¼">
+            <HomeLayout title="è¯·ç™»å½•">
                 <form onSubmit={this.handleSubmit}>
-                    <FormItem label="ÕËºÅ£º" valid={account.valid} error={account.error}>
+                    <FormItem label="è´¦å·ï¼š" valid={account.valid} error={account.error}>
                         <input type="text" value={account.value} onChange={e=>onFormChange('account',e.target.value)} />
                     </FormItem>
-                    <FormItem label="ÃÜÂë£º" valid={password.valid} error={password.error} >
+                    <FormItem label="å¯†ç ï¼š" valid={password.valid} error={password.error} >
                         <input type="password" value={password.value} onChange={e=>onFormChange('password',e.target.value)}  />
                     </FormItem>
                     <br />
-                    <input type="submit" value="µÇÂ¼" />
+                    <input type="submit" value="ç™»å½•" />
                 </form>
             </HomeLayout>
         )
@@ -64,8 +64,22 @@ Login = formProvider({
                pattern(value){
                return value.length>0
                 },
-               error:'ÇëÊäÈëÕËºÅ'
+               error:'è¯·è¾“å…¥è´¦å·'
            }
        ]
-   }
-});
+   },
+    password:{
+       defaultValue:'',
+        rules:[
+            {
+                pattern(value){
+                    return value.length>0;
+                },
+                error:'è¯·è¾“å…¥å¯†ç '
+            }
+        ]
+    }
+})(Login);
+
+export default  Login;
+

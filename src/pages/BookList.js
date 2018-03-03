@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeLayout from '../layouts/HomeLayout';
-import request,{get} from '../utils/request';
+import request,{get,del} from '../utils/request';
 
 class BookList extends React.Component {
   constructor (props) {
@@ -29,10 +29,11 @@ class BookList extends React.Component {
     const confirmed = window.confirm(`确定要删除图书 ${book.name} 吗？`);
 
     if (confirmed) {
-      fetch('http://localhost:3000/book/' + book.id, {
+ /*     fetch('http://localhost:3000/book/' + book.id, {
         method: 'delete'
       })
-        .then(res => res.json())
+        .then(res => res.json())*/
+        del('http://localhost:3000/book/'+book.id)
         .then(res => {
           this.setState({
             bookList: this.state.bookList.filter(item => item.id !== book.id)
