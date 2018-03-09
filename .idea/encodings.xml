@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/node_js_practice/imooc/http/Promise_crawler.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/node_js_practice/imooc/http/comment.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/node_js_practice/imooc/http/imooc-crawler.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server/db.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/FormItem.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/UserEditor.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.js" charset="UTF-8" />
@@ -15,5 +18,6 @@
     <file url="file://$PROJECT_DIR$/src/pages/UserList.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/utils/formProvider.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/utils/request.js" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
