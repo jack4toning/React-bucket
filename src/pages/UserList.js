@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import HomeLayout from '../layouts/HomeLayout.js';
-import request,{get,del} from '../utils/request';
+import {get,del} from '../utils/request';
 
 
 class UserList extends React.Component{
@@ -71,9 +72,9 @@ class UserList extends React.Component{
                                         <td>{user.gender}</td>
                                         <td>{user.age}</td>
                                         <td>
-                                            <a href="javascript:void(0)" onClick={()=>this.handleEdit(user)}>编辑</a>
+                                            <a href="" onClick={()=>this.handleEdit(user)}>编辑</a>
                                             &nbsp;
-                                            <a href="javascript:void(0)" onClick={()=>this.handleDel(user)}>删除</a>
+                                            <a href="" onClick={()=>this.handleDel(user)}>删除</a>
                                         </td>
                                     </tr>
                                 )
@@ -82,14 +83,14 @@ class UserList extends React.Component{
                         </tbody>
                     </table>
                     <br/>
-                    <a href="javascript:void(0)" onClick={()=>this.context.router.push('/')}>&lt;--返回主页</a>
+                    <a href="" onClick={()=>this.context.router.push('/')}>&lt;--返回主页</a>
                 </HomeLayout>
         );
     }
 }
 
 UserList.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
 };
 
 export default  UserList;

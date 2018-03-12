@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import FormItem from './FormItem';
 import AutoComplete from './AutoComplete';
 import formProvider from '../utils/formProvider';
-import request,{get} from '../utils/request';
+import request from '../utils/request';
 
 class BookEditor extends React.Component {
   constructor (props) {
@@ -169,7 +170,7 @@ class BookEditor extends React.Component {
 }
 
 BookEditor.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 BookEditor = formProvider({

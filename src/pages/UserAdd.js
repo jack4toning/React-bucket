@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import HomeLayout from '../layouts/HomeLayout.js';
 import UserEditor from '../components/UserEditor.js';
 
@@ -9,7 +10,7 @@ class UserAdd extends React.Component{
                 <HomeLayout title={"添加用户"}>
                     <UserEditor />
                     <br/>
-                    <a href="javascript:void(0)" onClick={()=>this.context.router.push('/')}>&lt;--返回主页</a>
+                    <a href="" onClick={(e)=>{e.preventDefault();this.context.router.push('/')}}>&lt;--返回主页</a>
                 </HomeLayout>
         );
     }
@@ -18,7 +19,8 @@ class UserAdd extends React.Component{
 
 
 UserAdd.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
 };
 
 export default  UserAdd;
+//javascript:void(0)

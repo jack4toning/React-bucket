@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import HomeLayout from '../layouts/HomeLayout';
 import BookEditor from '../components/BookEditor';
-import request,{get} from '../utils/request';
+import {get} from '../utils/request';
 
 class BookEdit extends React.Component {
   constructor (props) {
@@ -36,7 +37,7 @@ class BookEdit extends React.Component {
 }
 
 BookEdit.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default BookEdit;

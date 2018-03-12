@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import style from '../styles/auto-complete.less';
 
 
-//有时候我们显示的值不一定是我们想要得到的值，这样是为什么我在组件的代码里有一个getItemValue方法了。
 function getItemValue(item){
     return item.value||item;
 }
@@ -31,25 +30,21 @@ class AutoComplete extends React.Component{
         const {options} = this.props;
 
         switch (e.keyCode){
-            //13为回车键的键码(keyCode)
                 case 13:{
-                    //判断是否有列表项处于选中状态
                     if(activeItemIndex>=0){
-                        //防止按下回车键后自动提交表单
                         e.preventDefault();
                         e.stopPropagation();
                         this.handleChange(getItemValue(options[activeItemIndex]))
                     }
                     break;
                 }
-                //38为上方向键，40为下方向键
                 case 38:
                 case 40: {
                     e.preventDefault();
-                    //使用moveItem方法来更新或取消选中项
                     this.moveItem(e.keyCode===38?'up':'down');
                     break;
                 }
+            default:
         }
     }
 
@@ -59,10 +54,8 @@ class AutoComplete extends React.Component{
         const lastIndex = options.length - 1;
         let newIndex = -1;
 
-        //计算新的activeItemIndex
         if (direction === 'up') {
             if (activeItemIndex === -1) {
-                //如果没有选中项则选择最后一项
                 newIndex = lastIndex;
             } else {
                 newIndex = activeItemIndex - 1;
@@ -73,13 +66,11 @@ class AutoComplete extends React.Component{
             }
         }
 
-        //获取新的displayValue
         let newDisplayValue = '';
         if (newIndex >= 0) {
             newDisplayValue = getItemValue(options[newIndex]);
         }
 
-        //更新状态
         this.setState({
             displayValue:newDisplayValue,
             activeItemIndex:newIndex

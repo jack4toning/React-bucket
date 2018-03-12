@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormItem from '../components/FormItem.js';
 import formProvider from '../utils/formProvider.js';
-import request,{get} from '../utils/request';
+import request from '../utils/request';
 
 class UserEditor extends React.Component{
     handleSubmit(e){
@@ -95,7 +96,7 @@ class UserEditor extends React.Component{
 }
 
 UserEditor.contextTypes = {
-    router:React.PropTypes.object.isRequired
+    router:PropTypes.object.isRequired
 };
 
 UserEditor = formProvider({

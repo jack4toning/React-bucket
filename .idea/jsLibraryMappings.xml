@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-<<<<<<< HEAD
-=======
     <file url="file://$PROJECT_DIR$" libraries="{React_bucket node_modules}" />
->>>>>>> a45dc269f675019e14765c04a5857e9abf927976
     <includedPredefinedLibrary name="ECMAScript 6" />
   </component>
 </project>

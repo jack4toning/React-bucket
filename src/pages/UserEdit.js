@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import HomeLayout from '../layouts/HomeLayout.js';
 import UserEditor from '../components/UserEditor.js';
-import request,{get} from '../utils/request';
+import {get} from '../utils/request';
 
 class UserEdit extends React.Component {
     constructor(props){
@@ -36,7 +37,7 @@ class UserEdit extends React.Component {
 }
 
 UserEdit.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 export default UserEdit;
