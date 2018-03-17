@@ -1,54 +1,30 @@
 {
   "user": [
     {
-      "id": 10001,
-      "name": "张三",
-      "age": 30,
-      "gender": "female"
-    },
-    {
       "name": "moe",
-      "age": 35,
+      "age": 20,
       "gender": "male",
       "id": 10002
-    },
-    {
-      "name": "bart",
-      "age": "15",
-      "gender": "male",
-      "id": 10004
-    },
-    {
-      "name": "stu",
-      "age": "23",
-      "gender": "male",
-      "id": 10005
     }
   ],
   "book": [
     {
       "name": "JavaScript从入门到精通",
-      "price": 99,
+      "price": 10000,
       "owner_id": 10002,
       "id": 10000
     },
     {
       "name": "Java从入门到放弃",
-      "price": 19.89,
-      "owner_id": 10001,
+      "price": 21,
+      "owner_id": "10002",
       "id": 10001
     },
     {
-      "name": "导演的自我修养",
-      "price": 1000,
-      "owner_id": 10002,
-      "id": 10002
-    },
-    {
-      "name": "恰同学少年",
-      "price": 20,
+      "name": "kom",
+      "price": 30,
       "owner_id": "10001",
-      "id": 10003
+      "id": 10004
     }
   ]
 }

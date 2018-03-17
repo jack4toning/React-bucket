@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import { Menu, Icon, Button} from 'antd';
+import { Menu, Icon} from 'antd';
 import style from '../styles/home-layout.less';
 
 const SubMenu = Menu.SubMenu;
@@ -34,10 +34,7 @@ class HomeLayout extends React.Component {
                                 </MenuItem>
                             </SubMenu>
                         </Menu>
-                        <Button></Button><span>呵呵哒</span>
-
                     </div>
-
                     <div className={style.content}>
                         {children}
                     </div>

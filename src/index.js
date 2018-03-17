@@ -14,15 +14,15 @@ import LoginPage from './pages/Login';
 
 ReactDOM.render(
     (<Router history={hashHistory}>
-        <Route path="/" component={HomePage} />
-        <Route path="/" component={HomeLayout}>
+        <Route component={HomeLayout}>
+            <Route path="/" component={HomePage} />
             <Route path="/user/add" component={UserAddPage} />
             <Route path="/user/list" component={UserListPage} />
             <Route path="/user/edit/:id" component={UserEditPage} />
             <Route path="/book/add" component={BookAddPage}/>
             <Route path="/book/list" component={BookListPage}/>
             <Route path="/book/edit/:id" component={BookEditPage}/>
-            <Route path="/login" component={LoginPage}/>
         </Route>
+        <Route path="/login" component={LoginPage}/>
     </Router>),
 document.getElementById('app'));
